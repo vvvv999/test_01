@@ -1,4 +1,4 @@
 package Cars;
 
-public class Hatchback {
+public class Hatchback extends Car {
 }
