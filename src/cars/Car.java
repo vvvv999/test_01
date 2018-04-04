@@ -1,7 +1,7 @@
 package cars;
 
 public abstract class Car {
-
+// check if access modifiers are correct
     protected String brand;
     protected String model;
     protected short year;
