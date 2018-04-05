@@ -8,10 +8,13 @@ public abstract class Car {
     protected String carID;
     protected double fuelConsumption;
     protected double value;
+    protected boolean isPremiumClass;
+    protected String info;
 
 
 
-    //setters and getters
+
+    //setters
 
     public void setBrand(String brand) {
         this.brand = brand;
@@ -37,6 +40,17 @@ public abstract class Car {
         this.value = value;
     }
 
+
+    public void setIsPremiumClass(boolean isPremiumClass) {
+        this.isPremiumClass = isPremiumClass;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    //getters
+
     public String getBrand() {
         return brand;
     }
@@ -60,6 +74,12 @@ public abstract class Car {
     public double getValue() {
         return value;
     }
+    public boolean getIsPremiumClass() {
+        return isPremiumClass;
+    }
 
+    public String getInfo() {
+        return info;
+    }
 
-}
+    }
