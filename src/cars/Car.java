@@ -1,18 +1,15 @@
 package cars;
 
 public abstract class Car {
-// check if access modifiers are correct
+//NOTE TO SELF check if access modifiers are correct
     protected String brand;
     protected String model;
     protected short year;
     protected String carID;
+    protected short numberOfPassengers;
+    protected String trunkSize;
     protected double fuelConsumption;
     protected double value;
-    protected boolean isPremiumClass;
-    protected String info;
-
-
-
 
     //setters
 
@@ -32,6 +29,14 @@ public abstract class Car {
         this.carID = carID;
     }
 
+    public void setNumberOfPassengers(short numberOfPassengers) {
+        this.numberOfPassengers = numberOfPassengers;
+    }
+
+    public void setTrunkSize(String trunkSize) {
+        this.trunkSize = trunkSize;
+    }
+
     public void setFuelConsumption(double fuelConsumption) {
         this.fuelConsumption = fuelConsumption;
     }
@@ -41,13 +46,6 @@ public abstract class Car {
     }
 
 
-    public void setIsPremiumClass(boolean isPremiumClass) {
-        this.isPremiumClass = isPremiumClass;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
 
     //getters
 
@@ -67,6 +65,14 @@ public abstract class Car {
         return carID;
     }
 
+    public short getNumberOfPassengers() {
+        return numberOfPassengers;
+    }
+
+    public String getTrunkSize() {
+        return trunkSize;
+    }
+
     public double getFuelConsumption() {
         return fuelConsumption;
     }
@@ -74,12 +80,6 @@ public abstract class Car {
     public double getValue() {
         return value;
     }
-    public boolean getIsPremiumClass() {
-        return isPremiumClass;
-    }
 
-    public String getInfo() {
-        return info;
-    }
 
     }
