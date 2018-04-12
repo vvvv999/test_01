@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TaxiStation {
 
@@ -19,9 +21,16 @@ public class TaxiStation {
 
     //read from file
     public void readFromFile(String path) {
-        carsList = readFromFile.readDataFromFIle(path);
-
+       // carsList = readFromFile.readDataFromFIle(path);
+        carsList = Stream.concat(carsList.stream(), readFromFile.readDataFromFIle(path).stream()).collect(Collectors.toList());
             }
+
+    //read from database
+
+    public void readFromDB(){
+       // carsList = readDataFromDB.readFromDB();
+        carsList = Stream.concat(carsList.stream(), readDataFromDB.readFromDB().stream()).collect(Collectors.toList());
+    }
 
     //write to file
     public void writeToFile(String path) {

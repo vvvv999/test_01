@@ -1,8 +1,5 @@
 package utils;
-import cars.Car;
-import cars.MinivanCar;
-import cars.SedanCar;
-import cars.WagonCar;
+import cars.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -50,15 +47,15 @@ public class readFromFile {
             }
 
             else if (numberOfPassengers > 8 && trunkSize.equals("big")){
-                carsFromFile.add(new MinivanCar(brand, model, year, carID,
+                carsFromFile.add(new MinibusCar(brand, model, year, carID,
                         numberOfPassengers, fuelConsumption, value));
             }
             else{
-                System.out.println(carAttributes[0] + " " + carAttributes[1] + " ("+carID+") was not added to the cars list. Consider checking your input.");
+                System.out.println(carAttributes[0] + " " + carAttributes[1] + " ("+carAttributes[3]+") was not added to the cars list. Consider checking your input");
             }
 
         }
-        System.out.println("Data was successfully read from the file.");
+        System.out.println("Data was successfully read from the file");
         } catch (IOException e) {
             e.printStackTrace();
         }

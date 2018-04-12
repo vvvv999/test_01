@@ -1,4 +1,5 @@
 import taxistation.TaxiStation;
+import utils.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -6,6 +7,9 @@ public class Main {
        // station1.addDefaultCars();
         station1.readFromFile("src/1.csv");
 
+
+
+        station1.readFromDB();
         station1.writeToFile("src/2.csv");
 
 
