@@ -7,11 +7,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+public class ReadDataFromFile implements ReadDataUtil {
+
+    public String getFileAddress() {
+        return fileAddress;
+    }
+
+    public static void setFileAddress(String fileAddress) {
+        ReadDataFromFile.fileAddress = fileAddress;
+    }
+
+    private static String fileAddress;
+
+    public ReadDataFromFile(String fileAddress) {
+        this.fileAddress = fileAddress;
+    }
 
 
-public class readFromFile {
 
-    public static List<Car> readDataFromFIle(String fileAddress){
+    public static List<Car> readData(){
         List<Car> carsFromFile = new ArrayList<>();
          String line;
          String splitBy = ",";

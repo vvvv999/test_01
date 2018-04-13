@@ -22,39 +22,25 @@ public class TaxiStation {
     //read from file
     public void readFromFile(String path) {
        // carsList = readFromFile.readDataFromFIle(path);
-        carsList = Stream.concat(carsList.stream(), readFromFile.readDataFromFIle(path).stream()).collect(Collectors.toList());
+        ReadDataFromFile.setFileAddress(path);
+        carsList = Stream.concat(carsList.stream(), ReadDataFromFile.readData().stream()).collect(Collectors.toList());
             }
 
     //read from database
 
     public void readFromDB(){
        // carsList = readDataFromDB.readFromDB();
-        carsList = Stream.concat(carsList.stream(), readDataFromDB.readFromDB().stream()).collect(Collectors.toList());
+        carsList = Stream.concat(carsList.stream(), ReadDataFromDB.readData().stream()).collect(Collectors.toList());
     }
 
     //write to file
     public void writeToFile(String path) {
 
-        writeToFile.writeDataToFile(carsList, path);
+        WriteDataToFile.writeData(carsList, path);
 
     }
 
-    //for testing purposes
-    public void addDefaultCars() {
-        Car car1 = new WagonCar("Mercedes", "w123", (short) 1990,
-                "prr123", (short)4, 34.3,12000);
-        carsList.add(car1);
-        Car car2 = new SedanCar("Ford", "focus", (short) 2000,
-                "prr23123", (short)4,25, 12000.2);
-        carsList.add(car2);
-
-        for (Car car : carsList) {
-            System.out.println(car);
-        }
-        System.out.println();
-    }
-
-    // find total value of Taxi Station cars
+        // find total value of Taxi Station cars
     public double carTotalValue() {
         double totalValue = 0.0;
         for (Car car : carsList) {
