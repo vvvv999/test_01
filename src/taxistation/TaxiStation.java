@@ -19,6 +19,23 @@ public class TaxiStation {
     protected List<Car> carsList = new ArrayList<>();
 
 
+    public void loadData(DataReader readerObject ) {
+      //  readerObject.readData();
+        carsList = Stream.concat(carsList.stream(), readerObject.readData().stream()).collect(Collectors.toList());
+    }
+
+    public void saveData(TextFileWriter writerObject) {
+        writerObject.writeData(carsList);
+    }
+
+
+
+
+
+
+
+/*
+
     //read from file
     public void readFromFile(String path) {
        // carsList = readFromFile.readDataFromFIle(path);
@@ -48,7 +65,7 @@ public class TaxiStation {
         }
         return totalValue;
     }
-
+*/
 //sort cars list
     public List<Car> sortCarsList() {
 

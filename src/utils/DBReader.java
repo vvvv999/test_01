@@ -4,16 +4,16 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadDataFromDB implements ReadDataUtil {
+public class DBReader implements DataReader {
 
 
     static final String DB_URL = "jdbc:mysql://localhost:3306/taxistation?autoReconnect=true&useSSL=false";
     static final String USER = "root";
     static final String PASS = "root";
 
-    public static List<Car> readData() {
-        Connection conn = null;
-        Statement stmt = null;
+    public  List<Car> readData() {
+        Connection conn;
+        Statement stmt;
         List<Car> carsFromDB = new ArrayList<>();
         try {
             Class.forName("com.mysql.jdbc.Driver");

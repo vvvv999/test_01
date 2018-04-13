@@ -4,9 +4,15 @@ import cars.Car;
 import java.io.*;
 import java.util.List;
 
-public class WriteDataToFile {
+public class TextFileWriter {
+    private String path;
 
-    public static void writeData(List<Car> list, String path ){
+    public TextFileWriter(String path){
+
+        this.path = path;
+    }
+
+    public  void writeData(List<Car> list){
         File fileToWrite = new File(path);
         boolean isFileExists = fileToWrite.isFile();
         boolean FileNotEmpty = fileToWrite.length() > 0;
