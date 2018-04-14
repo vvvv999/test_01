@@ -8,11 +8,10 @@ public class TextFileWriter {
     private String path;
 
     public TextFileWriter(String path){
-
         this.path = path;
     }
 
-    public  void writeData(List<Car> list){
+    public void writeData(List<Car> list){
         File fileToWrite = new File(path);
         boolean isFileExists = fileToWrite.isFile();
         boolean FileNotEmpty = fileToWrite.length() > 0;

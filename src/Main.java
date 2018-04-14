@@ -4,15 +4,20 @@ import utils.*;
 public class Main {
     public static void main(String[] args) {
         TaxiStation station1 = new TaxiStation();
-
         DataReader dbReader = new DBReader();
-        DataReader txtReader = new TextFileReader("src/1.csv");
-       station1.loadData(dbReader);
-       station1.loadData(txtReader);
+        DataReader txtReader = new TextFileReader("res/1.csv");
+        DataReader jsonReader = new JSONReader("res/cars.json");
+        station1.loadData(dbReader);
+        station1.loadData(txtReader);
+        station1.loadData(jsonReader);
 
-       TextFileWriter txtWriter = new TextFileWriter("src/2.csv");
-       station1.saveData(txtWriter);
 
+
+        TextFileWriter txtWriter = new TextFileWriter("res/2.csv");
+        station1.saveData(txtWriter);
+
+
+     //   station1.carsToJson();
        /*
         station1.addDefaultCars();
         station1.readFromFile("src/1.csv");

@@ -16,48 +16,28 @@ import java.util.stream.Stream;
 
 public class TaxiStation {
 
-    protected List<Car> carsList = new ArrayList<>();
+    private List<Car> carsList = new ArrayList<>();
 
-
+    //read data from file/db/json
     public void loadData(DataReader readerObject ) {
       //  readerObject.readData();
         carsList = Stream.concat(carsList.stream(), readerObject.readData().stream()).collect(Collectors.toList());
+
     }
+
+
+    public void carsToJson(){
+        JSONWriter.carToJSON(carsList);
+    }
+
+
 
     public void saveData(TextFileWriter writerObject) {
         writerObject.writeData(carsList);
     }
 
 
-
-
-
-
-
-/*
-
-    //read from file
-    public void readFromFile(String path) {
-       // carsList = readFromFile.readDataFromFIle(path);
-        ReadDataFromFile.setFileAddress(path);
-        carsList = Stream.concat(carsList.stream(), ReadDataFromFile.readData().stream()).collect(Collectors.toList());
-            }
-
-    //read from database
-
-    public void readFromDB(){
-       // carsList = readDataFromDB.readFromDB();
-        carsList = Stream.concat(carsList.stream(), ReadDataFromDB.readData().stream()).collect(Collectors.toList());
-    }
-
-    //write to file
-    public void writeToFile(String path) {
-
-        WriteDataToFile.writeData(carsList, path);
-
-    }
-
-        // find total value of Taxi Station cars
+    // find total value of Taxi Station cars
     public double carTotalValue() {
         double totalValue = 0.0;
         for (Car car : carsList) {
@@ -65,7 +45,7 @@ public class TaxiStation {
         }
         return totalValue;
     }
-*/
+
 //sort cars list
     public List<Car> sortCarsList() {
 
