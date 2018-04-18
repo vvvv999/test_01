@@ -5,15 +5,15 @@ public class Main {
     public static void main(String[] args) {
         TaxiStation station1 = new TaxiStation();
         DataReader dbReader = new DBReader();
-        DataReader txtReader = new TextFileReader("res/1.csv");
-        DataReader jsonReader = new JSONReader("res/cars.json");
+        DataReader txtReader = new TextFileReader("res/TextInput.csv");
+        DataReader jsonReader = new JSONReader("res/JSONInput.json");
         station1.loadData(dbReader);
         station1.loadData(txtReader);
         station1.loadData(jsonReader);
 
 
 
-        TextFileWriter txtWriter = new TextFileWriter("res/2.csv");
+        TextFileWriter txtWriter = new TextFileWriter("res/TextOutput.csv");
         station1.saveData(txtWriter);
 
 

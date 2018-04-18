@@ -20,7 +20,7 @@ public class TaxiStation {
 
     //read data from file/db/json
     public void loadData(DataReader readerObject ) {
-      //  readerObject.readData();
+
         carsList = Stream.concat(carsList.stream(), readerObject.readData().stream()).collect(Collectors.toList());
 
     }

@@ -6,11 +6,11 @@ import java.util.List;
 
 public class DBReader implements DataReader {
 
-
     static final String DB_URL = "jdbc:mysql://localhost:3306/taxistation?autoReconnect=true&useSSL=false";
     static final String USER = "root";
     static final String PASS = "root";
 
+    @Override
     public  List<Car> readData() {
         Connection conn;
         Statement stmt;

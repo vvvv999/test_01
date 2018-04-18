@@ -22,7 +22,7 @@ public class TextFileWriter {
             if(isFileExists && FileNotEmpty){
                 writer.append("\n");
             }
-            BufferedWriter bw = new BufferedWriter(writer);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
             for (Car car : list){
             writer.append(car.getBrand());
@@ -43,10 +43,10 @@ public class TextFileWriter {
             if((list.size()-1) != list.indexOf(car)) {        //to escape unnecessary line break in the end of the file
                 writer.append("\n");
             }
-          //  bw.flush();
+
             }
 
-            bw.close();
+            bufferedWriter.close();
             System.out.println("Data saved to the file successfully");
         }
         catch (IOException e) {
