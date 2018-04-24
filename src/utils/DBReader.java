@@ -1,5 +1,9 @@
 package utils;
 import cars.*;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException;
+import exceptions.DBNotFoundException;
+
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +16,20 @@ public class DBReader implements DataReader {
 
     @Override
     public  List<Car> readData() {
-        Connection conn;
+        Connection conn = null;
         Statement stmt;
         List<Car> carsFromDB = new ArrayList<>();
         try {
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Connecting to database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            try {
+                conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            } catch (SQLNonTransientConnectionException e){
+                System.err.println("Database is not found");
+
+
+            }
+
 
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
@@ -60,11 +71,11 @@ public class DBReader implements DataReader {
 
             }
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        }
+        catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+
 
         return carsFromDB;
     }
