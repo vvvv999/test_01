@@ -64,11 +64,12 @@ public class TaxiStation {
     //find a car by year and value within specific range
     public void findCarByAttributes() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int yearMax;
 
         int x = 1;
-
+        System.out.println("Finding cars by year and value ranges");
         do {
-            System.out.println("Finding cars by year and value ranges");
+
             System.out.println("Enter min year");
             try {
 
@@ -77,11 +78,20 @@ public class TaxiStation {
                     throw new NegativeValueNotAllowedException();
                 }
                 System.out.println("Enter max year");
-                int yearMax = Integer.parseInt(reader.readLine());
+                yearMax = Integer.parseInt(reader.readLine());
+                if (yearMax < 0) {
+                    throw new NegativeValueNotAllowedException();
+                }
                 System.out.println("Enter min value");
                 int valueMin = Integer.parseInt(reader.readLine());
+                if (valueMin < 0) {
+                    throw new NegativeValueNotAllowedException();
+                }
                 System.out.println("Enter max value");
                 int valueMax = Integer.parseInt(reader.readLine());
+                if (valueMax < 0) {
+                    throw new NegativeValueNotAllowedException();
+                }
                 System.out.println("Cars found:");
                 for (Car car : carsList) {
                     if (car.getYear() >= yearMin && car.getYear() <= yearMax
@@ -92,10 +102,9 @@ public class TaxiStation {
                 }
                 x = 2;
             } catch (NegativeValueNotAllowedException e) {
-                System.out.println("Try again"); //had to use 'out' for printed outputs to be synchronized
 
             } catch (NumberFormatException e) {
-                System.out.println("Incorrect input format");
+                System.out.println("Incorrect input format. Only positive numbers are allowed here");
             } catch (IOException e) {
                 e.printStackTrace();
             }

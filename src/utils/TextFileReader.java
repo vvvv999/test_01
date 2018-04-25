@@ -1,39 +1,32 @@
 package utils;
 import cars.*;
+import exceptions.IncorrectFileFormatException;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TextFileReader implements DataReader {
 
-    public String getFileAddress() {
-        return fileAddress;
-    }
-
-    public void setFileAddress(String fileAddress) {
-        this.fileAddress = fileAddress;
-    }
-
-    private String fileAddress;
-
-    public TextFileReader(String fileAddress) {
-        this.fileAddress = fileAddress;
-    }
-
-
-
     public  List<Car> readData(){
         List<Car> carsFromFile = new ArrayList<>();
          String line;
          String splitBy = ",";
+        BufferedReader pathReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader fileReader = null;
+        String fileAddress;
+
         try {
-
-
-            BufferedReader reader = new BufferedReader(new FileReader(fileAddress));
-        while ((line = reader.readLine()) != null ){
+            fileAddress = pathReader.readLine();
+            if(!isFileExtensionCorrect(fileAddress)){
+                throw new IncorrectFileFormatException();
+            }
+           fileReader = new BufferedReader(new FileReader(fileAddress));
+        while ((line = fileReader.readLine()) != null ){
             String[] carAttributes = line.split(splitBy);
 
             String brand = carAttributes[0];
@@ -72,11 +65,25 @@ public class TextFileReader implements DataReader {
         System.out.println("Data was successfully read from the file");
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (IncorrectFileFormatException e) {
+            e.printStackTrace();
         }
 
-
+        try {
+            pathReader.close();
+            fileReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return carsFromFile;
+
     }
 
+
+    private static boolean isFileExtensionCorrect(String fullName) {
+        int dotIndex = fullName.lastIndexOf('.');
+        String extension = (dotIndex == -1) ? "" : fullName.substring(dotIndex + 1);
+        return extension.equals("txt") || extension.equals("csv");
+    }
 }

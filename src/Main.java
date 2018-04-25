@@ -7,7 +7,7 @@ public class Main {
         TaxiStation station1 = new TaxiStation();
 
      //   DataReader dbReader = new DBReader();
-        DataReader txtReader = new TextFileReader("res/TextInput.csv");
+        DataReader txtReader = new TextFileReader();
         DataReader jsonReader = new JSONReader("res/JSONInput.json");
     //    station1.loadData(dbReader);
         station1.loadData(txtReader);
