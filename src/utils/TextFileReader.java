@@ -3,10 +3,7 @@ import cars.*;
 import exceptions.IncorrectFileFormatException;
 
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +18,7 @@ public class TextFileReader implements DataReader {
         String fileAddress;
 
         try {
+            System.out.println("Read file...Type full file path");
             fileAddress = pathReader.readLine();
             if(!isFileExtensionCorrect(fileAddress)){
                 throw new IncorrectFileFormatException();
@@ -62,18 +60,26 @@ public class TextFileReader implements DataReader {
             }
 
         }
-        System.out.println("Data was successfully read from the file");
+        System.out.println("File reading completed");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (IncorrectFileFormatException e) {
             e.printStackTrace();
         }
+        finally{
 
-        try {
-            pathReader.close();
-            fileReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            if (fileReader != null){
+                try {
+                    fileReader.close();  //not closing system.in stream here because it's used in another method. It will be closed in Main after all methods are done
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+
+
         }
 
         return carsFromFile;

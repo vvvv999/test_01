@@ -1,15 +1,18 @@
 import taxistation.TaxiStation;
 import utils.*;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
 
         TaxiStation station1 = new TaxiStation();
-
-     //   DataReader dbReader = new DBReader();
+        station1.sortCarsList();
+//      DataReader dbReader = new DBReader();
         DataReader txtReader = new TextFileReader();
         DataReader jsonReader = new JSONReader("res/JSONInput.json");
-    //    station1.loadData(dbReader);
+//      station1.loadData(dbReader);
         station1.loadData(txtReader);
         station1.loadData(jsonReader);
         station1.findCarByAttributes();
@@ -19,8 +22,16 @@ public class Main {
         station1.saveData(txtWriter);
 
 
-      //  station1.sortCarsList();
+//      station1.sortCarsList();
 
+
+
+
+        try {
+            System.in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
      //   station1.carsToJson();
        /*
         station1.addDefaultCars();
